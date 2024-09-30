@@ -9,8 +9,8 @@ function Login() {
     password: ''
   });
   const [message, setMessage] = useState('');
-  const [loading, setLoading] = useState(false); // new loading state
-  const navigate = useNavigate(); // Initialize the navigate function
+  const [loading, setLoading] = useState(false); 
+  const navigate = useNavigate(); 
 
   const handleChange = (e) => {
     setFormData({
@@ -25,14 +25,14 @@ function Login() {
     try {
       const response = await axios.post('http://127.0.0.1:8000/login', formData);
       
-      // Store the token and username in localStorage
+
       localStorage.setItem('token', response.data.access_token);
-      localStorage.setItem('username', formData.email); // Store the email as username for now
+      localStorage.setItem('username', formData.email); 
   
       setMessage('Login successful!');
       setLoading(false);
   
-      // Redirect to the chatbot page after successful login
+     
       setTimeout(() => {
         navigate('/chatbot');
       }, 500);

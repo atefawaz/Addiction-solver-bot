@@ -3,48 +3,44 @@ import { useNavigate } from 'react-router-dom';
 import styles from '../styles/Chatbot.module.css';
 import botProfilePic from '../assets/A.png';
 
-// Importing icons from react-icons
 import { FaUser, FaSignOutAlt, FaCog, FaDownload, FaArrowUp } from 'react-icons/fa';
 
 const ChatbotPage = () => {
-  const [input, setInput] = useState(''); // State for user input
-  const [messages, setMessages] = useState([]); // Initialize messages as an empty array
-  const [loading, setLoading] = useState(false); // State for loading status
-  const [showDropdown, setShowDropdown] = useState(false); // State for dropdown visibility
-  const navigate = useNavigate(); // useNavigate hook for navigation
-  const username = localStorage.getItem('username') || ''; // Get username from localStorage or set to empty string
+  const [input, setInput] = useState(''); 
+  const [messages, setMessages] = useState([]); 
+  const [loading, setLoading] = useState(false); 
+  const [showDropdown, setShowDropdown] = useState(false); 
+  const navigate = useNavigate(); 
+  const username = localStorage.getItem('username') || ''; 
 
-  // Get the first letter of the username in uppercase
   const getFirstLetter = (name) => {
-    if (!name) return ''; // Handle case when name is undefined or empty
-    return name.charAt(0).toUpperCase(); // Return the first letter in uppercase
+    if (!name) return ''; 
+    return name.charAt(0).toUpperCase(); 
   };
 
-  // Fetch chat history when the component mounts
   useEffect(() => {
     const fetchChatHistory = async () => {
-      setLoading(true); // Set loading to true when fetching
+      setLoading(true);
       try {
         const response = await fetch(`http://localhost:8000/chat_history/${username}`, {
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,  // JWT token for protected route
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,  
           }
         });
         if (response.status === 401) {
-          // If the token is expired or invalid, navigate to login page
           handleLogout();
         }
 
         const data = await response.json();
-        console.log("Chat History Data:", data);  // Log the chat history data
+        console.log("Chat History Data:", data);  
         if (Array.isArray(data)) {
-          setMessages(data); // Ensure data is an array
+          setMessages(data); 
         } else {
-          setMessages([]); // Default to an empty array if data is not an array
+          setMessages([]); 
         }
       } catch (error) {
         console.error('Error fetching chat history:', error);
-        setMessages([]); // Reset messages to an empty array in case of error
+        setMessages([]); 
       }
       setLoading(false); // Stop loading after fetching
     };
@@ -53,8 +49,9 @@ const ChatbotPage = () => {
   }, [username]);
 
   // Function to send a message to the backend and get the response
+  
   const sendMessage = async () => {
-    if (input.trim() === '') return; // Ignore empty messages
+    if (input.trim() === '') return; 
 
     const userMessage = { sender: 'user', message: input }; // Updated to use "message"
     setMessages((prevMessages) => [...prevMessages, userMessage]);
