@@ -151,7 +151,7 @@ async def generate_response(prompt: str, token: str = Depends(oauth2_scheme), db
 
     
     if not is_addiction_related(prompt):
-        return {"response": "I can only assist with addiction-related queries. Please ask me anything about addiction recovery."}
+        return {"response": "I can only assist with addiction-related stuff . Please ask me anything about addiction recovery."}
 
     try:
         # Run the LLaMA model using the provided prompt
