@@ -1,0 +1,234 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"); /* Custom Font for the moving text */
+@import url("https://fonts.googleapis.com/css?family=IBM%20Plex%20Sans:500|IBM%20Plex%20Sans:300"); /* Existing Font */
+
+:root {
+  --m: 4rem;
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: black;
+  color: white;
+  font-family: "IBM Plex Sans";
+  font-weight: 300;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  color: #d5d5d5;
+}
+
+.logo-container {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 200px;
+  margin-bottom: 2rem;
+}
+
+/* Enhanced Card section with animated text */
+.card {
+  height: auto;
+  width: calc(16 * var(--m)); /* Increased the width */
+  background: #1e1e1e; /* Sleek black background */
+  color: #fff;
+  border-radius: calc(0.5 * var(--m));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--m);
+  gap: var(--m);
+  margin: 3rem auto;
+  text-align: center;
+  position: relative;
+  overflow: hidden; /* Hide overflowing text */
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.8); /* Cool shadow effect */
+  margin-bottom: 4rem;
+}
+
+/* Moving text inside the card */
+.moving-text-container {
+  height: 60px; /* Control the height of the container */
+  overflow: hidden; /* Hide overflow */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.moving-text {
+  font-family: 'Poppins', sans-serif; /* Apply custom font */
+  font-size: calc(0.5 * var(--m)); /* Font size relative to screen */
+  font-weight: 600;
+  color: #fff; /* White for text */
+  animation: scrollText 15s linear infinite; /* Increased duration to 15s */
+}
+
+/* Keyframe animation for scrolling text */
+@keyframes scrollText {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+button {
+  background-color: #fff; /* White background for contrast */
+  font-size: calc(0.4 * var(--m));
+  border: none;
+  color: #000; /* Black text color */
+  font-family: "IBM Plex Sans";
+  font-weight: 400;
+  padding: calc(0.35 * var(--m)) calc(0.8 * var(--m));
+  border-radius: calc(0.3 * var(--m));
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #ccc; /* Slightly darker hover color */
+}
+
+button a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* About Section - Same size and style as card */
+.about-section {
+  width: calc(16 * var(--m)); /* Same width as the card */
+  background-color: #1e1e1e; /* Matching black background */
+  color: #fff;
+  border-radius: calc(0.5 * var(--m));
+  padding: var(--m);
+  margin-bottom: 4rem;
+  text-align: center;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.8); /* Same shadow as the card */
+}
+
+.about-section h1 {
+  font-family: 'Poppins', sans-serif; /* Same font as the card */
+  font-size: calc(0.6 * var(--m));
+  color: #fff;
+}
+
+.about-section p {
+  font-family: 'Poppins', sans-serif;
+  color: #d3d3d3;
+  font-size: calc(0.3 * var(--m));
+}
+
+/* About section image styling */
+.about-section img {
+  max-width: 100%; /* Make the image responsive */
+  height: auto;
+  margin-top: 2rem; /* Space between the text and image */
+  border-radius: calc(0.3 * var(--m)); /* Rounded corners for the image */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7); /* Cool shadow effect for the image */
+}
+
+/* Footer */
+footer {
+  z-index: 500;
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  padding: 5rem 2vw;
+  position: relative;
+  background: black;
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0) 5%,
+    rgba(0, 0, 0, 0.3) 20%,
+    rgba(0, 0, 0, 0.6) 30%,
+    rgba(0, 0, 0, 0.8) 40%,
+    rgba(0, 0, 0, 1) 50%,
+    rgb(0, 0, 0)
+  );
+  z-index: -7;
+}
+
+.backdrop {
+  z-index: -5;
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(40px);
+}
+
+.col {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: calc(0.3 * var(--m)) calc(0.8 * var(--m));
+  width: 28%;
+}
+
+.col2,
+.col3 {
+  background-color: #121212;
+  border-radius: calc(0.5 * var(--m));
+}
+
+img {
+  height: calc(0.3 * var(--m));
+  object-fit: cover;
+}
+
+.social {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.link {
+  width: calc(0.8 * var(--m));
+  height: calc(0.8 * var(--m));
+  background-color: black;
+  border-radius: calc(0.1 * var(--m));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 1000px) {
+  :root {
+    --m: 3rem;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  footer {
+    flex-direction: column;
+    padding: 5rem 20vw;
+  }
+  .col {
+    width: 100%;
+  }
+}
+
+.about-image {
+  height: 300px;
+}

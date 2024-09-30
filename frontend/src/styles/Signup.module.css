@@ -1,0 +1,191 @@
+/* Centering the register session */
+.registerContainer {
+  display: flex;
+  justify-content: center; /* Horizontally centers the session */
+  align-items: center; /* Vertically centers the session */
+  height: 100vh; /* Full height of the viewport */
+  width: 100vw; /* Full width of the viewport */
+  background: #000000; /* Black theme background */
+}
+
+/* Session container for the form and image */
+.session {
+  display: flex;
+  flex-direction: row;
+  width: 900px; /* Increased width to allow more space for the image */
+  max-width: 100%;
+  height: auto;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+/* Left side styling for the image */
+.left {
+  width: 50%; /* Increased width to 50% to display more of the image */
+  background-image: url("../assets/A.png");
+  background-size: cover; /* Ensures the image covers the container */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+/* Form container styling */
+.registerForm {
+  width: 50%; /* 50% width for the form to match the image section */
+  padding: 60px 40px;
+  background: #1e1e1e; /* Dark background for form section */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+
+/* Title styling */
+.registerForm h4 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff; /* White text for titles */
+}
+
+.registerForm h4 span {
+  color: #b69de6; /* Accent color for the span */
+  font-weight: 700;
+}
+
+/* Description paragraph styling */
+.registerForm p {
+  line-height: 1.5;
+  margin-bottom: 40px;
+  font-size: 14px;
+  color: #cfcfcf; /* Light gray for text */
+  font-weight: 400;
+}
+
+/* Input fields styling */
+input {
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 44px; /* Space for icons */
+  height: 56px;
+  border: none;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.3);
+  background: transparent;
+  color: #ffffff;
+  transition: all 0.3s linear;
+  font-weight: 400;
+}
+
+/* Placeholder text styling */
+input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Focused input fields styling */
+input:focus {
+  border-bottom: solid 1px #b69de6;
+  outline: none;
+}
+
+/* Floating label styling */
+.floatingLabel {
+  position: relative;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.floatingLabel label {
+  position: absolute;
+  top: calc(50% - 7px);
+  left: 44px; /* Adjust for icon spacing */
+  opacity: 0;
+  transition: all 0.3s ease;
+  color: #b69de6; /* Accent color for label */
+}
+
+/* Styling for when the input is filled */
+.floatingLabel input:not(:placeholder-shown) {
+  padding: 28px 44px 12px 44px;
+}
+
+.floatingLabel input:not(:placeholder-shown) + label {
+  transform: translateY(-10px);
+  opacity: 1;
+}
+
+/* Icon inside input field styling */
+.floatingLabel .icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 56px;
+  width: 44px;
+  display: flex;
+}
+
+.floatingLabel .icon svg {
+  height: 30px;
+  width: 30px;
+  margin: auto;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+input:valid:not(:placeholder-shown) + label + .icon svg {
+  opacity: 1;
+  fill: #b69de6;
+}
+
+/* Button styling */
+button {
+  width: auto;
+  padding: 15px 40px;
+  background-color: #b69de6;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 24px;
+  margin-top: 10px;
+  border: none;
+  transition: all 0.3s ease;
+  outline: none;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 2px 6px rgba(182, 157, 230, 0.5);
+}
+
+button:disabled {
+  background-color: #888888;
+}
+
+/* Style for the "Don't have an account?" section */
+.signupText {
+  margin-top: 30px; /* Add more space between the form and the sign-up text */
+  font-size: 15px; /* Slightly larger for better readability */
+  color: #d3d3d3; /* Softer light gray for consistency with form design */
+  text-align: center; /* Center the text */
+  font-weight: 400; /* Keep the text light and clean */
+}
+
+/* Link styling */
+.signupText a {
+  color: #b69de6; /* Accent color to match the form’s design */
+  font-weight: 600; /* Make the link text bold for emphasis */
+  text-decoration: none; /* Remove the underline */
+  padding-left: 5px; /* Adds some padding before the link for better spacing */
+  border-bottom: 1px solid transparent; /* Subtle underline with a transition effect */
+  transition: color 0.3s ease, border-bottom-color 0.3s ease; /* Smooth transitions for hover effects */
+}
+
+/* Hover effect for link */
+.signupText a:hover {
+  color: #ffffff; /* Change to white for better contrast */
+  border-bottom-color: #ffffff; /* Add a visible underline on hover */
+}
