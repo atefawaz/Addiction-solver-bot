@@ -12,7 +12,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
 
 # Database setup
-DATABASE_URL = "sqlite:///./chat.db"
+DATABASE_URL = "sqlite:///./chatbot.db"
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
@@ -93,9 +93,8 @@ async def logout(token: str = Depends(oauth2_scheme)):
     blacklist.add(token)  # Add the token to the blacklist to "log out" the user
     return {"message": "Successfully logged out"}
 
-# Save chat message route
 @app.post("/save_message/")
-async def save_message(message: ChatMessageRequest, db: Session = Depends(get_db)):
+def save_message(message: ChatMessageRequest, db: Session = Depends(get_db)):
     user = db.query(User).filter(User.username == message.username).first()
     if not user:
         user = User(username=message.username)
@@ -147,11 +146,11 @@ def is_addiction_related(prompt: str):
 
 @app.post("/chatbot")
 async def generate_response(prompt: str, token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
-    user = verify_token(token)  
 
-    
+    user = verify_token(token)
+
     if not is_addiction_related(prompt):
-        return {"response": "I can only assist with addiction-related stuff . Please ask me anything about addiction recovery."}
+        return {"response": "I can only assist with addiction-related stuff. Please ask me anything about addiction recovery."}
 
     try:
         # Run the LLaMA model using the provided prompt
@@ -171,8 +170,9 @@ async def generate_response(prompt: str, token: str = Depends(oauth2_scheme), db
         user_message = ChatMessageRequest(username=user["sub"], message=prompt, sender="user")
         bot_message = ChatMessageRequest(username=user["sub"], message=bot_response, sender="bot")
 
-        await save_message(user_message, db)  # Save user message
-        await save_message(bot_message, db)   # Save bot message
+        # Save both user and bot messages in the database
+        save_message(user_message, db)  # Save user message
+        save_message(bot_message, db)   # Save bot message
 
         return {"response": bot_response}
 
