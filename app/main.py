@@ -134,7 +134,7 @@ async def clear_chat_history(username: str, db: Session = Depends(get_db)):
     return {"status": "Chat history cleared successfully"}
 
 ADDICTION_KEYWORDS = [
-    "addiction", "substance abuse", "recovery", "drug", "alcohol",
+    "addiction", "substance abuse",  "recovery", "drug", "alcohol",
     "rehab", "withdrawal", "overdose", "dependence", "therapy", "counseling",
     "habit", "compulsion", "detox", "smoking", "social media","hi" , "hello" , "greetings" 
 ]
