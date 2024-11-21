@@ -15,4 +15,4 @@ venv/
 # Environment Files
 .env
 
-chatbot
+chatbot.db
