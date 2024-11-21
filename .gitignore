@@ -1,5 +1,6 @@
 # Virtual environment
 venv/
+.gitignore
 
 # Node.js dependencies
 node_modules/
@@ -18,3 +19,5 @@ __pycache__/
 # Logs and other unnecessary files
 *.log
 .DS_Store
+
+.chatbot.db
