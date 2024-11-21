@@ -1,0 +1,20 @@
+# Virtual environment
+venv/
+
+# Node.js dependencies
+node_modules/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment variables
+.env
+
+# SQLite database files (if applicable)
+*.db
+
+# Logs and other unnecessary files
+*.log
+.DS_Store

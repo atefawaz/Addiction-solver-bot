@@ -5,10 +5,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-MONGO_DETAILS = os.getenv("MONGO_DETAILS", "mongodb://localhost:27017")
+MONGO_DETAILS = os.getenv("MONGO_DETAILS", "mongodb://localhost:27017/addiction_solver_bot")
 
 client = motor.motor_asyncio.AsyncIOMotorClient(MONGO_DETAILS)
-database = client.user_database
+database = client["addiction_solver_bot"]
 user_collection = database.get_collection("users")
 
 def user_helper(user) -> dict:

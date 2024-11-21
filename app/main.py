@@ -65,6 +65,12 @@ def get_db():
     finally:
         db.close()
 
+
+
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the Addiction Solver Bot API!"}
+
 # Register route
 @app.post("/register", response_model=UserResponse)
 async def register_user(user: UserCreate, db: Session = Depends(get_db)):

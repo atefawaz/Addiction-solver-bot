@@ -43,13 +43,13 @@ Before you begin, make sure you have the following installed:
 
    ```bash
    git clone https://github.com/atefawaz/Addiction-solver-bot.git
-   cd app
+   cd Addiction-solver-bot
    ```
 
 2. **Create a virtual environment:**
 
    ```bash
-   python -m venv venv
+   python3 -m venv venv #( depends if your using python3 or not )
    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
    ```
 
@@ -72,7 +72,7 @@ Before you begin, make sure you have the following installed:
 5. **Run the FastAPI server:**
 
    ```bash
-   uvicorn main:app --reload
+   uvicorn app.main:app --reload
    ```
 
    The backend will be running on [http://localhost:8000](http://localhost:8000).
