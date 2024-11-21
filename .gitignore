@@ -1,23 +1,18 @@
-# Virtual environment
-venv/
-.gitignore
+# macOS
+.DS_Store
 
-# Node.js dependencies
-node_modules/
-
-# Python cache files
+# Python
 __pycache__/
 *.pyc
 *.pyo
 
-# Environment variables
+# Node.js
+node_modules/
+
+# Virtual Environments
+venv/
+
+# Environment Files
 .env
 
-# SQLite database files (if applicable)
-*.db
-
-# Logs and other unnecessary files
-*.log
-.DS_Store
-
-.chatbot.db
+chatbot
